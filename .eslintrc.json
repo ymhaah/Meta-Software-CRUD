@@ -1,0 +1,7 @@
+{
+    "extends": "next/core-web-vitals",
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "no-console": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+}
