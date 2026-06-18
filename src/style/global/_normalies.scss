@@ -3,18 +3,6 @@
 
 :root {
     --container-width: calc(100% - 4rem);
-
-    --radius: 0.35rem;
-
-    --shadow: 0 6px 30px rgba(0, 0, 0, 10%);
-    --margin: min(12em, 12vh);
-
-    --icon-size: 1rem;
-    --icon-clr: var(--bg-clr);
-
-    --animation: cubic-bezier(0.4, 0, 0.2, 1);
-    --time-fast: 0.2s;
-    --time-slow: 0.4s;
 }
 
 *,
@@ -105,10 +93,6 @@ ul {
 
 img {
     max-width: 100%;
-    block-size: auto;
-    inline-size: auto;
-    max-inline-size: 100%;
-    height: auto;
     vertical-align: middle;
     font-style: italic;
     font-weight: bold;

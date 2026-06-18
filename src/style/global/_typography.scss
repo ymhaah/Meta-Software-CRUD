@@ -60,14 +60,11 @@ body {
 }
 :where(h1, h2, h3, h4, p, a:not(.Button), span) {
     margin: 0;
-    font-size: var(--fs-base);
 }
 :where(h1, h2, h3, h4) {
     text-transform: capitalize;
 }
-// :where(h1, h2, h3, h4, p, span):not(:last-child) {
-//     margin: 0 0 0.5rem 0;
-// }
+
 .h1 {
     font-weight: 700;
     line-height: calc(1em * 1.1);
@@ -96,47 +93,6 @@ small,
     font-size: var(--fs-sm);
     letter-spacing: var(--ls-xl);
     font-weight: 300;
-}
-
-.fs-sm {
-    font-size: var(--fs-sm);
-}
-.fs-base {
-    font-size: var(--fs-base);
-}
-.fs-md {
-    font-size: var(--fs-md);
-}
-.fs-lg {
-    font-size: var(--fs-lg);
-}
-.fs-xl {
-    font-size: var(--fs-xl);
-}
-.fs-xxl {
-    font-size: var(--fs-xxl);
-}
-.fs-xxxl {
-    font-size: var(--fs-xxxl);
-}
-
-.ls-xs {
-    letter-spacing: var(--ls-xs);
-}
-.ls-sm {
-    letter-spacing: var(--ls-sm);
-}
-.ls-md {
-    letter-spacing: var(--ls-md);
-}
-.ls-lg {
-    letter-spacing: var(--ls-lg);
-}
-.ls-base {
-    letter-spacing: var(--ls-base);
-}
-.ls-xl {
-    letter-spacing: var(--ls-xl);
 }
 
 a {
