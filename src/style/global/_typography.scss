@@ -42,7 +42,6 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-    font-size: var(--fs-base);
     font-style: normal;
     line-height: 1.6;
     letter-spacing: var(--ls-base);
@@ -118,14 +117,4 @@ a {
     :where(a:not(.Button), .Link):hover {
         opacity: 0.9;
     }
-}
-input,
-button,
-textarea,
-a,
-select,
-span {
-    font: inherit;
-    letter-spacing: inherit;
-    word-spacing: inherit;
 }

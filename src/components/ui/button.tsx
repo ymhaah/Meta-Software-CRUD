@@ -1,51 +1,37 @@
-import { ReactNode } from "react";
-
-type BasePropsT<E extends React.ElementType> = {
+type BasePropsT = {
     children: React.ReactNode;
     isDisabled?: boolean;
     iconOnlyAlt?: string;
     handleClick?: (event: React.MouseEvent) => void;
-    as?: E extends "button" | "a" ? E : never;
 };
 
-type ButtonPropsT<E extends React.ElementType> = BasePropsT<E> &
-    Omit<React.ComponentProps<E>, keyof BasePropsT<E>>;
+type ButtonPropsT = BasePropsT & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Button component.
- * Renders a 'button' or 'a' (anchor) element.
  * @param {ButtonPropsT} props - Component props.
  *    - isDisabled: Indicates whether the button is disabled. Default is false.
  *    - iconOnlyAlt: Alternative text for the button icon, used for accessibility when only an icon is displayed.
- *    - as: The element type to render. Can be either 'button' or 'a' (anchor). Defaults to 'button'.
  * @returns {ReactNode} - Rendered button component.
  */
-function Button<E extends React.ElementType = "button">({
+function Button({
     children,
-    isDisabled,
+    isDisabled = false,
     iconOnlyAlt,
     handleClick,
-    as,
     ...nativeAttributes
-}: ButtonPropsT<E>): ReactNode {
-    const Component = as || "button";
-
+}: ButtonPropsT) {
     return (
-        <Component
-            type={
-                Component === "button"
-                    ? nativeAttributes.type || "button"
-                    : undefined
-            }
+        <button
+            type={nativeAttributes.type || "button"}
             aria-label={iconOnlyAlt}
-            aria-disabled={isDisabled}
-            disabled={Component === "button" ? isDisabled : undefined}
+            disabled={isDisabled}
             onClick={handleClick}
             {...nativeAttributes}
             className={`Button focus ${isDisabled ? "disabled" : ""} ${iconOnlyAlt ? "icon-only" : ""} ${nativeAttributes.className || ""}`}
         >
             {children}
-        </Component>
+        </button>
     );
 }
 

@@ -1,6 +1,8 @@
 import type { ProductT } from "../types/product";
 
 import Image from "./ui/Image";
+import RatingStars from "./ui/RatingStars";
+import ProductTag from "./ui/ProductTag";
 
 // export type ProductT = {
 //     id: number;
@@ -34,31 +36,25 @@ function ProductCard({ product }: { product: ProductT }) {
                 />
             </div>
             <div className="">
-                <div className="mb-5 flex flex-col gap-2">
+                <div className="mb-7 flex flex-col gap-2">
                     <h2 className="text-lg font-semibold" title={title}>
-                        {shortenText(title, 24)}
+                        {shortenText(title, 20)}
                     </h2>
                     <p className="text-base text-gray-500">
                         {shortenText(description)}
                     </p>
-
-                    <div className="mb-4 flex gap-2">
-                        <span className="rounded-md border border-gray-300 px-3 py-1 text-xs font-semibold tracking-wide text-gray-600">
-                            {category}
-                        </span>
-                    </div>
                 </div>
-
-                <div className="flex items-center justify-between">
-                    <div>
-                        <p className="mb-1 text-xs font-semibold tracking-wide text-gray-400">
+                <div className="mb-2 flex flex-row items-center justify-between">
+                    <div className="flex flex-col">
+                        <p className="text-xs font-semibold tracking-wide text-slate-400">
                             PRICE
                         </p>
-                        <p className="text-2xl font-bold text-gray-900">
-                            ${price}
-                        </p>
+                        <p className="text-lg font-bold">{price}$</p>
                     </div>
+                    <ProductTag content={category} />
                 </div>
+
+                <RatingStars rating={rating.rate} reviewCount={rating.count} />
             </div>
         </div>
     );
@@ -66,7 +62,4 @@ function ProductCard({ product }: { product: ProductT }) {
 
 export default ProductCard;
 
-// TODO: fix card height
-// TODO: category + make it a badge + make it can categorize
-// TODO: price + rating
-// TODO: fix image size + make it responsive
+// TODO: make category button on card can categorize
