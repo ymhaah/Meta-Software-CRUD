@@ -1,39 +1,39 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import type { ProductT } from "../types/product";
+import type { categoryT } from "../types/category";
 
-function useProductSearch(data: ProductT[] | undefined) {
-    const [query, setQuery] = useState("");
-
-    const normalizedQuery = query.toLowerCase().trim();
+function useProductSearch(
+    data: ProductT[] | undefined,
+    selectedCategories: categoryT[],
+    searchQuery = ""
+) {
+    const normalizedQuery = searchQuery.toLowerCase().trim();
 
     const filteredData = useMemo(() => {
         if (!data) return [];
 
-        if (!normalizedQuery) return data;
-
         return data.filter((product) => {
-            const titleMatch = product.title
-                .toLowerCase()
-                .includes(normalizedQuery);
+            // ? Category Filter
+            const categoryMatch =
+                selectedCategories.length === 0 ||
+                selectedCategories.includes(product.category as categoryT);
 
-            const priceMatch = product.price
-                .toString()
-                .includes(normalizedQuery);
+            // ? Search Filter
+            const searchMatch =
+                !normalizedQuery ||
+                product.title.toLowerCase().includes(normalizedQuery) ||
+                product.price.toString().includes(normalizedQuery) ||
+                product.rating.rate.toString().includes(normalizedQuery);
 
-            const ratingMatch = product.rating.rate
-                .toString()
-                .includes(normalizedQuery);
-
-            return titleMatch || priceMatch || ratingMatch;
+            return categoryMatch && searchMatch;
         });
-    }, [data, normalizedQuery]);
+    }, [data, normalizedQuery, selectedCategories]);
 
     return {
-        query,
-        setQuery,
         filteredData,
         isData: filteredData.length > 0,
     };
 }
+
 export default useProductSearch;

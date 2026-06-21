@@ -52,6 +52,16 @@ body {
     width: var(--container-width, 90%);
     margin-inline: auto;
 }
+@media screen and (min-width: 1600px) {
+    .Container {
+        width: calc(1600px - 6rem);
+    }
+}
+@media screen and (max-width: 768px) {
+    .Container {
+        width: calc(100% - 2.5rem);
+    }
+}
 :disabled,
 .disabled {
     --focus-ring-clr: var(--mono-clr);
@@ -87,16 +97,6 @@ img {
     pointer-events: none;
     isolation: isolate;
 }
-svg {
-    // width: var(--icon-size);
-    // height: var(--icon-size);
-    // aspect-ratio: 1;
-    // fill: var(--icon-clr);
-    // color: var(--icon-clr);
-}
-.Line {
-    background-color: var(--accent-clr, hsla(225, 7%, 12%));
-}
 :where(.Button) {
     width: fit-content;
     height: fit-content;
@@ -126,16 +126,13 @@ svg {
 }
 @supports not (padding: max(0.5em, 0.5rem) max(1em, 1rem)) {
     .button {
-        padding: 0.5em 1.75em;
+        padding: 0.5em 1.25em;
     }
 }
 @media (hover: hover) and (pointer: fine) {
     :where(.Button):not(.disabled, :disabled):hover {
         opacity: 0.9;
     }
-}
-:where(.Button):active {
-    transform: scale(0.95);
 }
 :where(.Button.icon-only) {
     padding: max(1em, 1rem);
@@ -146,59 +143,17 @@ svg {
 .button :where(svg, img, span) {
     pointer-events: none;
 }
-.Button:has(img, svg) {
-}
-.Button:where(:hover, :active):not(:has(img, svg)) {
-}
-.Button:has(img, svg):where(:hover, :active) {
-}
-
-.button.icon-only {
-    padding: max(1em, 1rem);
-    box-shadow: none;
-}
-
-.loeadToDown {
-    transform: translateY(-100%);
-    opacity: 0.5;
-    animation: loeadToDown calc(var(--time-slow) * 2) var(--animation) forwards;
-}
-@keyframes navSlideIn {
-    0% {
-        transform: translateY(-125%);
+/* For people who have motion sickness. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0s !important;
+        transition-duration: 0s !important;
     }
-    100% {
-        transform: translateY(0%);
-    }
-}
-@keyframes navSlideOut {
-    0% {
-        transform: translateY(0%);
-    }
-    100% {
-        transform: translateY(-125%);
-    }
-}
-@keyframes loeadToDown {
-    0% {
-        opacity: 0.5;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@keyframes text-animation {
-    from {
-        opacity: 0.4;
-        transform: translateX(-25%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
 }

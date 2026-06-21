@@ -47,23 +47,3 @@
 
     color-scheme: light;
 }
-// @media (prefers-color-scheme: dark) {
-//     :root {
-//         --bg-clr: var(--bg-clr-dark);
-//         --txt-clr: var(--txt-clr-dark);
-//         --accent-clr: var(--accent-clr-dark);
-//         --secondary-clr: var(--secondary-clr-dark);
-//         color-scheme: dark;
-//     }
-// }
-// @media (prefers-color-scheme: dark) {
-//     .Logo {
-//         filter: invert(1);
-//     }
-
-//     .logo {
-//         filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-//     }
-// }
-@media (forced-colors: active) {
-}

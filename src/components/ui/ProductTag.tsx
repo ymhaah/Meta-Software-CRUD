@@ -2,12 +2,16 @@ import Button from "./Button";
 
 interface ProductTagProps {
     content: string;
-    onClick?: () => void;
+    onSelect?: (event: React.MouseEvent) => void;
+    className?: string;
 }
 
-function ProductTag({ content }: ProductTagProps) {
+function ProductTag({ content, onSelect, className }: ProductTagProps) {
     return (
-        <Button className="bg-(--bg-clr) text-sm text-gray-500">
+        <Button
+            handleClick={onSelect}
+            className={`bg-(--bg-clr) text-sm text-gray-500 ${className}`}
+        >
             {content}
         </Button>
     );

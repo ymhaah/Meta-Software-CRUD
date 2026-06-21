@@ -1,8 +1,5 @@
 import { Heart } from "lucide-react";
-/**
- * Footer component renders the footer with various link sections.
- * @returns {React.ReactNode} The rendered footer component.
- */
+
 function Footer() {
     return (
         <footer
