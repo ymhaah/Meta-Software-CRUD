@@ -27,7 +27,7 @@ The application will be available at:
 
 ### Links
 
-- [live site link]()
+- [live site link](https://meta-software-crud.vercel.app/)
 
 ### Built with
 
